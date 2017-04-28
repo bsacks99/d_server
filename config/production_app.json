@@ -1,0 +1,8 @@
+{
+    "environment": "production",
+    "logging": {
+        "level": "error",
+        "logger": "syslog"
+    },
+    "mongo_settings": {}
+}

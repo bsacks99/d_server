@@ -1,0 +1,8 @@
+{
+    "environment": "test",
+    "logging": {
+        "level": "info",
+        "logger": "stdout"
+    },
+    "mongo_settings": {}
+}
