@@ -29,9 +29,16 @@ class Bootstrap():
             self.__logger.info("setting up route: {}".format(route))
             module = importlib.import_module("application.controllers.{}".format(route))
             class_ = getattr(module, route.title())
-            the_controller = class_()
-            for endpoint in routes[route]:
-                self.__app.add_url_rule(endpoint, view_func=the_controller.as_view(route))
+
+            class_args = []
+            class_kwargs = {
+                'logger': self.__logger,
+                'config': self.__config
+            }
+
+            for rule in routes[route]:
+                self.__logger.info("setting up enpoint: {}".format(rule))
+                self.__app.add_url_rule(rule, view_func=class_.as_view(rule, *class_args, **class_kwargs))
 
     def go(self):
         self.__logger.info("running app.")

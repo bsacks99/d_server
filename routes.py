@@ -3,7 +3,8 @@ class Routes():
 
     __routes = {
         'hello': [
-            '/hello'
+            '/hello',
+            '/hello/<uuid:object>'
         ]
     }
 

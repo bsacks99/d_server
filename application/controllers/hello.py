@@ -1,9 +1,23 @@
+from flask import request
+from application.core.controller import Controller
 
-from flask.views import MethodView
-from flask import jsonify
+class Hello(Controller):
 
-class Hello(MethodView):
+    def __init__(self, *args, **kwargs):
+        print(kwargs)
+        exit
+        super().__init__(**kwargs)
 
-    def get(self):
+    def get_handler(self, object=None):
 
-        return jsonify({'hello': True})
+        data = {'hello': True}
+
+        return self.get_response(data)
+
+    def post_handler(self, object=None):
+
+        print(request.data)
+
+        data = {'hello': True}
+
+        return self.get_response(data)
